@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import { configureEnv } from './config';
+import { LoginRoutes } from './presentation/routes/login.routes';
 
 export class App {
   private app: Application;
@@ -21,11 +22,10 @@ export class App {
   }
 
   private configureRoutes() {
-    this.app.get('/', (request, response) => {
-      return response.status(200).send({
-        message: 'tocomfome',
-      });
-    });
+    const loginRoute = new LoginRoutes();
+    const loginRoutes = loginRoute.getRoutes();
+
+    this.app.use(loginRoutes);
   }
 
   public start() {
