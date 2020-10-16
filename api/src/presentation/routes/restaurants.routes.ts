@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { BuscarRestaurantController } from '../controllers/buscar-restaurant.controller';
+import { BuscarRestaurantController } from '../controllers/restaurants';
 
-export class BuscarRestaurantRoutes {
+export class RestaurantsRoutes {
     private _router: Router;
     private _controller: BuscarRestaurantController;
 
@@ -16,6 +16,6 @@ export class BuscarRestaurantRoutes {
     }
 
     private mapRoutes() {
-        this._router.get('/buscarRestaurant', (req, res) => this._controller.restaurants(req, res));
+        this._router.get('/restaurants', (req, res) => this._controller.findRestaurants(req, res));
     }
 }

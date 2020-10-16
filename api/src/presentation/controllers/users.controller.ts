@@ -1,17 +1,17 @@
 import { Request, Response } from 'express';
 import { HttpStatus } from '../../infra/enums/http-status.enum';
 import { HandleResponse } from '../../infra/helper/handleResponse';
-import { IRegisterRestaurantHandler } from '../../modules/register-restaurant/handlers/register-restaurant-handler.interface';
-import { RegisterRestaurantHandler } from '../../modules/register-restaurant/handlers/register-restaurant.handler';
+import { IRegisterUserHandler } from '../../modules/users/handlers/register-user-handler.interface';
+import { RegisterUserHandler } from '../../modules/users/handlers/register-user.handler';
 
-export class RegisterRestaurantController {
-    private _registerRestaurantHandler: IRegisterRestaurantHandler;
+export class UsersController {
+    private _registerRestaurantHandler: IRegisterUserHandler;
 
     constructor() {
-        this._registerRestaurantHandler = new RegisterRestaurantHandler();
+        this._registerRestaurantHandler = new RegisterUserHandler();
     }
 
-    async registerRestaurant(request: Request, response: Response) {
+    async registerUser(request: Request, response: Response) {
         try {
             const result = await this._registerRestaurantHandler.handle(request.body)
             return HandleResponse.handle(response, HttpStatus.SUCCESS, result);

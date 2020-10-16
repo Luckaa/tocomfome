@@ -1,11 +1,10 @@
-import express, { Application } from 'express';
 import cors from 'cors';
+import express, { Application } from 'express';
 import { configureEnv } from './config';
-import { LoginRoutes } from './presentation/routes/login.routes';
 import { InfoRoutes } from './presentation/routes/info.routes';
-import { RegisterClientRoutes } from './presentation/routes/register-client.routes';
-import { RegisterRestaurantRoutes } from './presentation/routes/register-restaurant.routes';
-import { BuscarRestaurantRoutes } from './presentation/routes/buscar-restaurant.routes';
+import { LoginRoutes } from './presentation/routes/login.routes';
+import { RestaurantsRoutes } from './presentation/routes/restaurants.routes';
+import { UsersRoutes } from './presentation/routes/users.routes';
 
 export class App {
   private app: Application;
@@ -33,21 +32,17 @@ export class App {
     const defaultRoutes = defaultRoute.getRoutes();
 
 
-    const buscarRestaurantRoute = new BuscarRestaurantRoutes();
-    const buscarRestaurantRoutes = buscarRestaurantRoute.getRoutes();
+    const restaurantsRoute = new RestaurantsRoutes();
+    const restaurantsRoutes = restaurantsRoute.getRoutes();
 
-    const registerClientRoute = new RegisterClientRoutes();
-    const registerClientRoutes = registerClientRoute.getRoutes();
-
-    const registerRestaurantRoute = new RegisterRestaurantRoutes();
-    const registerRestaurantRoutes = registerRestaurantRoute.getRoutes();
+    const usersRoute = new UsersRoutes();
+    const usersRoutes = usersRoute.getRoutes();
 
 
     this.app.use(loginRoutes);
     this.app.use(defaultRoutes);
-    this.app.use(registerClientRoutes);
-    this.app.use(registerRestaurantRoutes);
-    this.app.use(buscarRestaurantRoutes)
+    this.app.use(restaurantsRoutes);
+    this.app.use(usersRoutes)
 
   }
 
