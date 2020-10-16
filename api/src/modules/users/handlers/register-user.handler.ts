@@ -6,13 +6,17 @@ import { ValidationFailedError } from '../../../infra/errors/validationFailedErr
 import { IUserRepository } from '../repositories/user.repository.interface';
 import { UserRepository } from '../repositories/user.repository';
 import { User } from '../models/user';
+import { IEncriptService } from '../../shared/services/encript-service.interface';
+import { EncriptService } from '../../shared/services/encript.service';
 
 export class RegisterUserHandler implements IRegisterUserHandler {
 
     private _repository: IUserRepository;
+    private _encriptService: IEncriptService;
 
     constructor() {
         this._repository = new UserRepository();
+        this._encriptService = new EncriptService();
     }
 
     async handle(registerUserDto: RegisterUserDto): Promise<Result> {
@@ -34,7 +38,6 @@ export class RegisterUserHandler implements IRegisterUserHandler {
 
     private async validadeUseCases(registerUserDto: RegisterUserDto) {
         const userFound = await this._repository.findByEmail(registerUserDto.email);
-        console.log(userFound);
         
         if (userFound) {
             throw new ValidationFailedError('falha ao cadastrar usuario', { name: 'email', message: 'email ja cadastrado' });
@@ -42,8 +45,12 @@ export class RegisterUserHandler implements IRegisterUserHandler {
     }
 
     private async saveUser(registerUserDto: RegisterUserDto) {
+
+        const encriptedPassword = await this._encriptService.encript(registerUserDto.password);
+
         const newUser = {
-            ...registerUserDto
+            ...registerUserDto,
+            password: encriptedPassword,
         } as User;
 
         const userCreated = await this._repository.create(newUser);

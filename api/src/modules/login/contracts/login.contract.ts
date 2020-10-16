@@ -17,7 +17,7 @@ export class LoginContract extends Notifiable {
         this._validator.isValidEmail(this._dto.email, 'email', 'email invalido');
         
         this._validator.isRequired(this._dto.password, 'password', 'password é obrigatorio');
-        this._validator.isLessThan(this._dto.password.length, 6, "password", "a senha não pode ter menos que 6 caracteres")
+        this._validator.isLessThan(this._dto.password?.length, 6, "password", "a senha não pode ter menos que 6 caracteres")
 
         this.addReports(this._validator.reports);
         return this.isValid();

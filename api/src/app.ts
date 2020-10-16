@@ -1,7 +1,7 @@
 import cors from 'cors';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
-import { configureEnv } from './config';
+import config from './config';
 import { InfoRoutes } from './presentation/routes/info.routes';
 import { LoginRoutes } from './presentation/routes/login.routes';
 import { RestaurantsRoutes } from './presentation/routes/restaurants.routes';
@@ -15,7 +15,6 @@ export class App {
   }
 
   public async create() {
-    configureEnv();
     this.configuraMiddlewares();
     this.configureRoutes();
     this.connectToDatabase();
@@ -47,7 +46,7 @@ export class App {
   }
 
   private async connectToDatabase() {
-    return mongoose.connect('mongodb://localhost:27017/tocomfomedb',
+    return mongoose.connect(config.DB_URI,
       { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
         console.log('database conected');
       }).catch(err => {
@@ -56,7 +55,7 @@ export class App {
   }
 
   public start() {
-    const PORT = process.env.PORT;
+    const PORT = config.PORT;
     this.app.listen(PORT, () => {
       console.log('ta rodando na porta', PORT);
     });
