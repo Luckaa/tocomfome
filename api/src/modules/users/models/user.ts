@@ -1,5 +1,7 @@
 import { UserType } from '../enums/user-type.enum';
-export interface RegisterUserDto {
+
+export interface User {
+    _id: string;
     type: UserType;
     nome: string;
     email: string;

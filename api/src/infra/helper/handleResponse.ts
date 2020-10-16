@@ -9,6 +9,8 @@ export abstract class HandleResponse {
   }
 
   public static handleError(response: Response, status: HttpStatus, error: Error) {
+    console.log(error);
+    
     if (error instanceof ValidationFailedError) {
       return response.status(status).send(new Result(null, error.message, false, error.reports));
     }

@@ -1,5 +1,6 @@
 import cors from 'cors';
 import express, { Application } from 'express';
+import mongoose from 'mongoose';
 import { configureEnv } from './config';
 import { InfoRoutes } from './presentation/routes/info.routes';
 import { LoginRoutes } from './presentation/routes/login.routes';
@@ -17,6 +18,7 @@ export class App {
     configureEnv();
     this.configuraMiddlewares();
     this.configureRoutes();
+    this.connectToDatabase();
   }
 
   private configuraMiddlewares() {
@@ -31,7 +33,6 @@ export class App {
     const defaultRoute = new InfoRoutes();
     const defaultRoutes = defaultRoute.getRoutes();
 
-
     const restaurantsRoute = new RestaurantsRoutes();
     const restaurantsRoutes = restaurantsRoute.getRoutes();
 
@@ -42,8 +43,16 @@ export class App {
     this.app.use(loginRoutes);
     this.app.use(defaultRoutes);
     this.app.use(restaurantsRoutes);
-    this.app.use(usersRoutes)
+    this.app.use(usersRoutes);
+  }
 
+  private async connectToDatabase() {
+    return mongoose.connect('mongodb://localhost:27017/tocomfomedb',
+      { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+        console.log('database conected');
+      }).catch(err => {
+        console.log('error to connect to database ', err)
+      })
   }
 
   public start() {
