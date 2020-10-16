@@ -7,10 +7,6 @@ import { RegisterClientRoutes } from './presentation/routes/register-client.rout
 import { RegisterRestaurantRoutes } from './presentation/routes/register-restaurant.routes';
 import { BuscarRestaurantRoutes } from './presentation/routes/buscar-restaurant.routes';
 
-
-
-
-
 export class App {
   private app: Application;
 
@@ -46,7 +42,7 @@ export class App {
     const registerRestaurantRoute = new RegisterRestaurantRoutes();
     const registerRestaurantRoutes = registerRestaurantRoute.getRoutes();
 
-    
+
     this.app.use(loginRoutes);
     this.app.use(defaultRoutes);
     this.app.use(registerClientRoutes);
