@@ -14,7 +14,7 @@
 
     .title {
         font-size: 20px;
-        margin-bottom: 20px;
+        display: block;
     }
 
     .input {
@@ -24,6 +24,13 @@
 
     .btn-register {
         margin-top: 20px;
+    }
+    .header-card{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+
     }
   }
 }
