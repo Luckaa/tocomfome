@@ -1,6 +1,7 @@
 import Button from '@material-ui/core/Button';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import TocomFomeLogo from '../../assets/images/tocomfome-logo.svg';
 import geolocationService from '../../services/geolocation.service';
 import './header.scss';
@@ -37,7 +38,8 @@ const Header: React.FC = () => {
         <Button color="primary" startIcon={<ShoppingCart color="primary" />}>
           Carrinho
         </Button>
-        <Button color="primary">Entrar</Button>
+         
+        <Link to="/login"><Button color="primary">Entrar</Button></Link>
       </div>
     </div>
   );
