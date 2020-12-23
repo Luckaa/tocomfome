@@ -1,0 +1,35 @@
+.header-container {
+  background-color: #323232;
+  color: #ffffff;
+  padding: 12px 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 13pt;
+
+  .logo {
+    flex: 1;
+    img {
+      width: 80px;
+    }
+  }
+
+  .delivery-address {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-right: 60px;
+
+    .delivery-address-label {
+      font-weight: bold;
+      font-size: 10pt;
+      text-transform: uppercase;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+}
