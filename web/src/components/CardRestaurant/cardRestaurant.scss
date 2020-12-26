@@ -1,0 +1,54 @@
+.card-full{
+ width: 390px;
+}
+
+
+
+.card-restaurant-container {
+    color: black;
+    padding: 4px 4px;
+    font-size: 13pt;
+    display: flex;
+    flex-direction: row;
+    
+
+    .restaurant-img{
+        width: 150px;
+        img{
+            width: 100%;
+        }
+    }
+    .restaurant-info{
+        padding: 10px;
+        
+       span{
+            display: block;
+        }
+        .restaurant-name{
+            font-size: x-large;
+            justify-content: center;
+            align-items: center;
+        }
+       
+        .restaurant-avaliation{
+        display: inline-block;
+        padding: 3px;
+
+        }
+        .restaurant-categorie{
+        display: inline-block;
+        padding: 10px;
+        margin-left: 20px;
+
+        }
+        
+    }
+
+}
+
+    
+  
+  
+   
+  
+  

@@ -23,7 +23,7 @@ const Register = () => {
     <div className="register-container">
       <Card className="card">
         <div className="header-card">
-          <ArrowBackIcon onClick={goBack} />
+          <ArrowBackIcon className="btn-icon" onClick={goBack} />
           <h2 className="title">Cadastrar-se</h2>
         </div>
 
@@ -53,7 +53,7 @@ const Register = () => {
           </>
         )}
 
-        <Button className="btn-register" variant="contained" color="primary">
+        <Button className="btn-register"  variant="contained" color="primary">
           Cadastrar-se
         </Button>
       </Card>

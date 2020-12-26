@@ -30,7 +30,9 @@
       gap: 10px;
       align-items: center;
       margin-bottom: 20px;
-
+      .btn-icon{
+        cursor: pointer;
+    }
     }
   }
 }

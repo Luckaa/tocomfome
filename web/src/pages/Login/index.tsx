@@ -4,12 +4,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import InputForm from "../../components/formComponents/InputForm";
 import "./login.scss";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import { useHistory } from "react-router-dom";
+
+
 
 const Login = () => {
+  let history = useHistory();
+  const goBack = () => history.goBack();
   return (
     <div className="login-container">
       <Card className="card">
-        <h2 className="title">Login</h2>
+
+      <div className="header-card">
+          <ArrowBackIcon className="btn-icon" onClick={goBack} />
+          <h2 className="title">Login</h2>
+        </div>
 
         <InputForm label="Email" type="email" />
         <InputForm label="Senha" type="password" />
