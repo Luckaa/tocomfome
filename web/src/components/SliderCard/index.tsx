@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider, { Settings } from 'react-slick';
 import './sliderCard.scss';
+import CardRestaurant from '../../components/CardRestaurant/index';
+
 
 const SliderCard: React.FC = () => {
   const settings: Settings = {
@@ -17,22 +19,22 @@ const SliderCard: React.FC = () => {
   return (
     <Slider {...settings} className="slider-category">
       <div>
-        <div className="slide-item">colocar aqui o card</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
       <div>
-        <div className="slide-item">2</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
       <div>
-        <div className="slide-item">3</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
       <div>
-        <div className="slide-item">4</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
       <div>
-        <div className="slide-item">5</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
       <div>
-        <div className="slide-item">6</div>
+        <div className="slide-item"><CardRestaurant/></div>
       </div>
     </Slider>
   );
