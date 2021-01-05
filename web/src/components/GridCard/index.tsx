@@ -17,8 +17,9 @@ type Props = {
 const GridCard: React.FC<Props> = ({ restaurants }) => {
   return (
     <div className="grid-category">
-      {restaurants.map((restaurant) => (
+      {restaurants.map((restaurant, index) => (
         <CardRestaurant
+          key={index}
           name={restaurant.name}
           category={restaurant.category}
           avaliation={restaurant.avaliation}

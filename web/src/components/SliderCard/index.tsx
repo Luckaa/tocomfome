@@ -14,6 +14,16 @@ type Props = {
   categories: Category[];
 };
 
+const NextArrow: React.FC = (props: any) => {
+  const { onClick } = props;
+  return <NavigateBeforeIcon onClick={onClick} />;
+};
+
+const PrevArrow: React.FC = (props: any) => {
+  const { onClick } = props;
+  return <NavigateNextIcon fontSize="large" onClick={onClick} />;
+};
+
 const SliderCard: React.FC<Props> = ({ categories }) => {
   const settings: Settings = {
     focusOnSelect: true,
@@ -25,14 +35,14 @@ const SliderCard: React.FC<Props> = ({ categories }) => {
     swipeToSlide: true,
     centerMode: true,
     arrows: true,
-    nextArrow: <NavigateNextIcon fontSize="large" />,
-    prevArrow: <NavigateBeforeIcon fontSize="large" />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   return (
     <Slider {...settings} className="slider-category">
-      {categories.map((category) => (
-        <div>
+      {categories.map((category, index) => (
+        <div key={index}>
           <div className="slide-item">
             <CardCategory name={category.name} imgUrl={category.imgUrl} />
           </div>
