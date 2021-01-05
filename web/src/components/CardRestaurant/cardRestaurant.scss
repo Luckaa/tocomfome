@@ -1,54 +1,52 @@
-.card-full{
- width: auto;
+.card-full {
+  width: auto;
 }
-
-
 
 .card-restaurant-container {
-    color: black;
-    padding: 4px 4px;
-    font-size: 13pt;
-    display: flex;
-    flex-direction: row;
-    
+  color: black;
+  padding: 4px 4px;
+  font-size: 13pt;
+  display: flex;
+  flex-direction: row;
 
-    .restaurant-img{
-        width: 150px;
-        img{
-            width: 100%;
-        }
+  .restaurant-img {
+    max-width: 130px;
+    img {
+      width: 100%;
     }
-    .restaurant-info{
-        padding: 10px;
-        
-       span{
-            display: block;
-        }
-        .restaurant-name{
-            font-size: x-large;
-            justify-content: center;
-            align-items: center;
-        }
-       
-        .restaurant-avaliation{
-        display: inline-block;
+  }
+  .restaurant-info {
+    padding: 10px;
+
+    span {
+      display: block;
+    }
+
+    .basic-info {
+      margin-top: 8px;
+      display: flex;
+      align-items: center;
+      font-size: 12pt;
+      color: #000000b0;
+      flex-wrap: wrap;
+
+      .separator {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgb(148, 148, 148);
+        margin: 0 5px;
+      }
+
+      .restaurant-name {
+        font-size: 14pt;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .restaurant-avaliation {
         padding: 3px;
-
-        }
-        .restaurant-categorie{
-        display: inline-block;
-        padding: 10px;
-        margin-left: 20px;
-
-        }
-        
+      }
     }
-
+  }
 }
-
-    
-  
-  
-   
-  
-  

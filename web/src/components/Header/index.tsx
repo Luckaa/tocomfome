@@ -43,7 +43,7 @@ const Header: React.FC = () => {
         </Button>
         <Button color="primary" onClick={goToLogin}>
           Entrar
-        </Button>{' '}
+        </Button>
       </div>
     </div>
   );

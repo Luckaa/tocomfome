@@ -1,66 +1,32 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import CardRestaurant from '../../components/CardRestaurant/index';
 import './gridCard.scss';
 
+export type Restaurant = {
+  name: string;
+  imgUrl?: string;
+  avaliation?: number;
+  category: string;
+  distance?: number;
+};
 
-const GridCard = () => {
+type Props = {
+  restaurants: Restaurant[];
+};
 
+const GridCard: React.FC<Props> = ({ restaurants }) => {
   return (
     <div className="grid-category">
-    <Grid container spacing={3}>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper><CardRestaurant/></Paper>
-        </Grid>
-      </Grid>
+      {restaurants.map((restaurant) => (
+        <CardRestaurant
+          name={restaurant.name}
+          category={restaurant.category}
+          avaliation={restaurant.avaliation}
+          distance={restaurant.distance}
+          imgUrl={restaurant.imgUrl}
+        />
+      ))}
     </div>
-      
   );
-}
+};
 export default GridCard;

@@ -1,0 +1,27 @@
+.card-category-container {
+  color: black;
+  padding: 4px 4px;
+  font-size: 13pt;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .category-img {
+    width: 150px;
+    img {
+      width: 100%;
+    }
+  }
+  .category-info {
+    padding: 10px;
+
+    span {
+      display: block;
+    }
+    .category-name {
+      font-size: 16pt;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

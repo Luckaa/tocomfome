@@ -1,33 +1,39 @@
-import Paper from "@material-ui/core/Paper";
-import React from "react";
-import LogoRestaurant from "../../assets/images/restaurant1.png";
+import Paper from '@material-ui/core/Paper';
 import StarIcon from '@material-ui/icons/Star';
-import "./cardRestaurant.scss";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
+import React from 'react';
+import './cardRestaurant.scss';
 
-const CardRestaurant = () => {
+type Props = {
+  name: string;
+  imgUrl?: string;
+  avaliation?: number;
+  category: string;
+  distance?: number;
+};
+
+const CardRestaurant: React.FC<Props> = (props) => {
+  const { name, imgUrl, avaliation, category, distance } = props;
+
   return (
     <Paper className="card-full">
-    <div className="card-restaurant-container">
-      <div className="restaurant-img">
-        <img
-          src={LogoRestaurant}
-          alt="logo"
-        />
-      </div>
-      <div className='restaurant-info'>
-        <span className="restaurant-name">Cleitão Lanches</span>
-        <div>
-        <StarIcon className="star"/><span className="restaurant-avaliation">4,5</span>
-        <span className="restaurant-categorie">Lanches</span>
+      <div className="card-restaurant-container">
+        <div className="restaurant-img">
+          <img src={imgUrl} alt="logo" />
         </div>
-        <span className="restaurant-distance">7,9KM</span>
+        <div className="restaurant-info">
+          <span className="restaurant-name">{name}</span>
+          <div className="basic-info">
+            <StarIcon className="star" />
+            <span className="restaurant-avaliation">{avaliation}</span>
+            <span className="separator"></span>
+            <span className="restaurant-categorie">{category}</span>
+            <span className="separator"></span>
+            <span className="restaurant-distance">{distance} KM</span>
+          </div>
+        </div>
       </div>
-    </div>
     </Paper>
-
-  
   );
 };
+
 export default CardRestaurant;
