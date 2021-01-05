@@ -1,9 +1,9 @@
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
-import React from 'react';
-import Slider, { Settings } from 'react-slick';
-import CardCategory from '../CardCategory/index';
-import './sliderCard.scss';
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import React from "react";
+import Slider, { Settings } from "react-slick";
+import CardCategory from "../CardCategory/index";
+import "./sliderCard.scss";
 
 type Category = {
   name: string;
@@ -35,16 +35,45 @@ const PrevArrow: React.FC = (props: any) => {
 const SliderCard: React.FC<Props> = ({ categories }) => {
   const settings: Settings = {
     focusOnSelect: true,
-    dots: false,
     infinite: true,
-    speed: 2000,
-    slidesToShow: 4,
-    slidesToScroll: 1,
+    speed: 200,
+    slidesToShow: 5,
+    slidesToScroll: 2,
     swipeToSlide: true,
     centerMode: true,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1272,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+        },
+      },
+      {
+        breakpoint: 958,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 808,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 572,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
