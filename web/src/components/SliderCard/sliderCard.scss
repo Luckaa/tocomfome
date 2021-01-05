@@ -13,10 +13,18 @@
   }
 }
 
+.slick-next::before,
+.slick-prev::before {
+  content: '';
+  border-radius: 1em !important;
+}
+
 .slick-next,
 .slick-prev {
   background: #eb5b5b;
-  border-radius: 1em;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 30px;
   color: white !important;
   transition: 0.3s;
 }
@@ -26,7 +34,5 @@
 .slick-prev:focus,
 .slick-prev:hover {
   transition: 0.3s;
-  color: white;
   background: #c74d4d;
-  border-radius: 1em;
 }

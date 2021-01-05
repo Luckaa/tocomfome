@@ -15,13 +15,21 @@ type Props = {
 };
 
 const NextArrow: React.FC = (props: any) => {
-  const { onClick } = props;
-  return <NavigateBeforeIcon onClick={onClick} />;
+  const { onClick, className, style } = props;
+  return (
+    <div className={className} style={{ ...style }}>
+      <NavigateNextIcon fontSize="large" onClick={onClick} />
+    </div>
+  );
 };
 
 const PrevArrow: React.FC = (props: any) => {
-  const { onClick } = props;
-  return <NavigateNextIcon fontSize="large" onClick={onClick} />;
+  const { onClick, className, style } = props;
+  return (
+    <div className={className} style={{ ...style }}>
+      <NavigateBeforeIcon fontSize="large" onClick={onClick} />
+    </div>
+  );
 };
 
 const SliderCard: React.FC<Props> = ({ categories }) => {
