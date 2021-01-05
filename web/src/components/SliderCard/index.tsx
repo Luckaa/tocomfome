@@ -40,7 +40,6 @@ const SliderCard: React.FC<Props> = ({ categories }) => {
     slidesToShow: 5,
     slidesToScroll: 2,
     swipeToSlide: true,
-    centerMode: true,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
