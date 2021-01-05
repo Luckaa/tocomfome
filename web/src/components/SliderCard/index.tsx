@@ -38,7 +38,7 @@ const SliderCard: React.FC<Props> = ({ categories }) => {
     infinite: true,
     speed: 200,
     slidesToShow: 5,
-    slidesToScroll: 2,
+    slidesToScroll: 1,
     swipeToSlide: true,
     arrows: true,
     nextArrow: <NextArrow />,
@@ -48,21 +48,21 @@ const SliderCard: React.FC<Props> = ({ categories }) => {
         breakpoint: 1272,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 958,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 808,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
         },
       },
       {
