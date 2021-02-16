@@ -1,6 +1,6 @@
 import TextField from '@material-ui/core/TextField';
-import React, {FunctionComponent, useEffect, useRef} from 'react';
 import { useField } from '@unform/core';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 
 
 interface Props {
@@ -14,7 +14,7 @@ type InputProps = Props;
 
 const InputForm: FunctionComponent <InputProps> = ({ name, label, ...rest }) => {
   const inputRef = useRef(null);
-  const { fieldName, defaultValue, registerField, error } = useField(name);
+  const { fieldName, defaultValue, registerField, error, clearError } = useField(name);
 
   useEffect(() => {
     registerField({
@@ -31,6 +31,7 @@ const InputForm: FunctionComponent <InputProps> = ({ name, label, ...rest }) => 
       label={label}
       className="input-form"
       size="small"
+      onChange={clearError}
       helperText={error}
       variant="outlined"
       defaultValue={defaultValue}

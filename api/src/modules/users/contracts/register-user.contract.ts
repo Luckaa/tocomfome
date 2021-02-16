@@ -41,7 +41,7 @@ export class RegisterUserContract extends Notifiable {
         }
 
         if(this._dto.password != this._dto.validatePassword){
-            this.addReport({name:"password" , message:"as senhas não coincidem"})
+            this.addReport({name:"validatePassword" , message:"as senhas não coincidem"})
         }
 
         const isNotValidUserType = !Object.values(UserType).some((v) => v === this._dto.type);

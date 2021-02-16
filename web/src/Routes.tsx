@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 const Routes = () => {
   return (
     <BrowserRouter>
-      <Redirect path="/" to="/home" />
+      <Redirect path="/" to="/register" />
       <Route component={Login} path="/login" />
       <Route component={Register} path="/register" />
       <Route component={Home} path="/home" />
