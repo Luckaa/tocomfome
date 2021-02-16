@@ -12,7 +12,7 @@ export class AuthService implements IAuthService {
     async generateToken(user: User): Promise<string> {
         const dataToken: Payload = {
             _id: user._id,
-            name: user.nome,
+            name: user.name,
             email: user.email
         };
 
@@ -22,7 +22,7 @@ export class AuthService implements IAuthService {
 
     async verifyToken(token: string): Promise<Payload> {
         const tokenReplace = this.replaceToken(token);
-        const data: any = await verifyAsync(tokenReplace, config.SALT_KEY);
+        const data: any = await verifyAsync(tokenReplace);
         return data;
     }
 

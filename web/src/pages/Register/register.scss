@@ -7,7 +7,8 @@
   justify-content: center;
 
   .card {
-      min-width: 400px;
+      min-width: 500px;
+      max-width: 500px;
     padding: 30px;
     display: flex;
     flex-direction: column;
@@ -17,14 +18,17 @@
         display: block;
     }
 
-    .input {
+    .input-form {
         width: 100%;
         margin: 10px auto;
     }
 
     .btn-register {
         margin-top: 20px;
+        width: 100%;
+
     }
+  
     .header-card{
       display: flex;
       gap: 10px;

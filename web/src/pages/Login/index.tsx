@@ -6,14 +6,21 @@ import InputForm from "../../components/formComponents/InputForm";
 import "./login.scss";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { useHistory } from "react-router-dom";
+import { Form } from '@unform/web';
 
 
+const handleSubmit = (data: any) =>{
+  console.log(data);
+}
 
 const Login = () => {
   let history = useHistory();
   const goBack = () => history.goBack();
   return (
     <div className="login-container">
+      <Form onSubmit={handleSubmit}> 
+
+      
       <Card className="card">
 
       <div className="header-card">
@@ -21,8 +28,8 @@ const Login = () => {
           <h2 className="title">Login</h2>
         </div>
 
-        <InputForm label="Email" type="email" />
-        <InputForm label="Senha" type="password" />
+        <InputForm name="email" label="Email" type="email" />
+        <InputForm name="passoword" label="Senha" type="password" />
 
         <Button className="btn-login" variant="contained" color="primary">
           Entrar
@@ -31,6 +38,7 @@ const Login = () => {
           <Button color="primary">Registrar-se</Button>
         </Link>
       </Card>
+      </Form>
     </div>
   );
 };

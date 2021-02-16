@@ -7,7 +7,9 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import InputForm from "../../components/formComponents/InputForm";
+import { Form } from '@unform/web';
 import "./register.scss";
+import usersService from "../../services/users.service";
 
 const Register = () => {
   let history = useHistory();
@@ -19,43 +21,58 @@ const Register = () => {
   };
   const goBack = () => history.goBack();
 
+
+  const handleSubmit = async (data: any) => {
+    try {
+      data.type = clientType
+      const response = await usersService.registerUser(data);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error.response.data.errors)
+    }
+
+  }
+
+
   return (
     <div className="register-container">
       <Card className="card">
-        <div className="header-card">
-          <ArrowBackIcon className="btn-icon" onClick={goBack} />
-          <h2 className="title">Cadastrar-se</h2>
-        </div>
+        <Form onSubmit={handleSubmit}>
+          <div className="header-card">
+            <ArrowBackIcon className="btn-icon" onClick={goBack} />
+            <h2 className="title">Cadastrar-se</h2>
+          </div>
 
-        <RadioGroup value={clientType} onChange={handleChange}>
-          <FormControlLabel
-            value="client"
-            control={<Radio />}
-            label="Sou cliente"
-          />
-          <FormControlLabel
-            value="restaurant"
-            control={<Radio />}
-            label="Sou restaurante"
-          />
-        </RadioGroup>
+          <RadioGroup value={clientType} onChange={handleChange}>
+            <FormControlLabel
+              value="client"
+              control={<Radio />}
+              label="Sou cliente"
+            />
+            <FormControlLabel
+              value="restaurant"
+              control={<Radio />}
+              label="Sou restaurante"
+            />
+          </RadioGroup>
 
-        <InputForm label="Nome" />
-        <InputForm label="Email" type="email" />
-        <InputForm label="Senha" type="password" />
-        <InputForm label="Confirmar senha" type="password" />
+          <InputForm name="name" label="Nome" />
+          <InputForm name="email" label="Email" type="email" />
+          <InputForm name="password" label="Senha" type="password" />
+          <InputForm name="validatePassword" label="Confirmar senha" type="password" />
 
-        {clientType === "restaurant" && (
-          <>
-            <InputForm label="CNPJ" />
-            <InputForm label="Endereço" />
-            <InputForm label="Nome do estabelecimento" />
-          </>
-        )}
+          {clientType === "restaurant" && (
+            <>
+              <InputForm name="cnpj" label="CNPJ" />
+              <InputForm name="adress" label="Endereço" />
+              <InputForm name="localName" label="Nome do estabelecimento" />
+            </>
+          )}
 
-        <Button className="btn-register"  variant="contained" color="primary">
-          Cadastrar-se
+          <Button className="btn-register" type="submit" variant="contained" color="primary">
+            Cadastrar-se
         </Button>
+        </Form>
       </Card>
     </div>
   );

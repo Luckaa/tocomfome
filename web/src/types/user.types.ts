@@ -1,10 +1,12 @@
-import { UserType } from '../enums/user-type.enum';
-export interface RegisterUserDto {
+export enum UserType {
+    CLIENT = 'client',
+    RESTAURANT = 'restaurant'
+}
+export type RegisterUserDto = {
     type: UserType;
     name: string;
     email: string;
     password: string;
-    validatePassword: string,
     ownerName: string;
     restaurantName:string;
     cnpj:string;
