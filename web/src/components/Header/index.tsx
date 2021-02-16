@@ -11,10 +11,7 @@ const Header: React.FC = () => {
   const { signed, signOut, user } = useAuth();
   const history = useHistory();
   const [streetName, setStreetName] = useState('--');
-
-  console.log(user);
   
-
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(async (location) => {
       const { latitude, longitude } = location.coords;

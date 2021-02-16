@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import { model, Schema } from 'mongoose';
 import { UserType } from '../enums/user-type.enum';
 
 const schema = new Schema(
@@ -7,12 +7,12 @@ const schema = new Schema(
             type: String,
             enum: [UserType.CLIENT, UserType.RESTAURANT]
         },
-        nome: String,
+        name: String,
         email: String,
         password: String,
         category: String,
-        nomeDoProprietario: String,
-        nomeDoRestaurante: String,
+        ownerName: String,
+        restaurantName: String,
         cnpj: String,
     },
     {

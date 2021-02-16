@@ -1,10 +1,9 @@
-import React from 'react';
-import cleitaoLanches from '../../assets/images/cleitao.png';
+import React, { useEffect, useState } from 'react';
 import lanchesCategory from '../../assets/images/lanches-category.jpg';
 import GridCard from '../../components/GridCard';
-import { Restaurant } from '../../components/GridCard/index';
 import Header from '../../components/Header/index';
 import SliderCard from '../../components/SliderCard';
+import restaurantService from '../../services/restaurant.service';
 import './home.scss';
 
 const categories = [
@@ -34,94 +33,19 @@ const categories = [
   },
 ];
 
-const restaurants: Restaurant[] = [
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-  {
-    name: 'Cleytão Lanches',
-    category: 'Lanches',
-    avaliation: 4.5,
-    distance: 50,
-    imgUrl: cleitaoLanches,
-  },
-];
-
 const Home: React.FC = () => {
+  const [restaurants, setRestaurants] = useState([]);
+
+  useEffect(() => {
+    const loadRestaurants = async () => {
+      const response  = await restaurantService.findRestaurants();
+      console.log(response.data);
+      setRestaurants(response.data);
+    };
+
+    loadRestaurants();
+  }, []);
+
   return (
     <div className="home-container">
       <Header />
