@@ -1,13 +1,11 @@
 import { RegisterUserDto } from "../types/user.types";
 import api from "./api";
 
+class UserService {
+    async registerUser(newUser: RegisterUserDto) {
+        const response = await api.post('/users', newUser);
 
-
-class UserService{
-async registerUser(newUser: RegisterUserDto){
-    const response = await api.post('/users',newUser);   
-
-    return response
-}
+        return response
+    }
 }
 export default new UserService();

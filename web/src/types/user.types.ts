@@ -8,6 +8,11 @@ export type RegisterUserDto = {
     email: string;
     password: string;
     ownerName: string;
-    restaurantName:string;
-    cnpj:string;
+    restaurantName: string;
+    cnpj: string;
+}
+
+export interface LoginDto {
+    email: string;
+    password: string;
 }

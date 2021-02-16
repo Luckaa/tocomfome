@@ -3,12 +3,17 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TocomFomeLogo from '../../assets/images/tocomfome-logo.svg';
+import { useAuth } from '../../context/auth.context';
 import geolocationService from '../../services/geolocation.service';
 import './header.scss';
 
 const Header: React.FC = () => {
+  const { signed, signOut, user } = useAuth();
   const history = useHistory();
   const [streetName, setStreetName] = useState('--');
+
+  console.log(user);
+  
 
   if ('geolocation' in navigator) {
     navigator.geolocation.getCurrentPosition(async (location) => {
@@ -41,9 +46,15 @@ const Header: React.FC = () => {
         <Button color="primary" startIcon={<ShoppingCart color="primary" />}>
           Carrinho
         </Button>
-        <Button color="primary" onClick={goToLogin}>
-          Entrar
-        </Button>
+        {signed ? (
+          <Button color="primary" onClick={signOut}>
+            Sair
+          </Button>
+        ) : (
+          <Button color="primary" onClick={goToLogin}>
+            Entrar
+          </Button>
+        )}
       </div>
     </div>
   );

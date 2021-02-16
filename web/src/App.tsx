@@ -1,8 +1,8 @@
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 import './App.scss';
-import Routes from './Routes';
-
+import { AuthProvider } from './context/auth.context';
+import Routes from './routes';
 
 const theme = createMuiTheme({
   palette: {
@@ -17,11 +17,13 @@ const theme = createMuiTheme({
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="app-container">
-        <Routes/>
-      </div>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <div className="app-container">
+          <Routes />
+        </div>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
