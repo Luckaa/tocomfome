@@ -2,6 +2,7 @@ import cors from 'cors';
 import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import config from './config';
+import { CategoriesRoutes } from './presentation/routes/categories.routes';
 import { InfoRoutes } from './presentation/routes/info.routes';
 import { LoginRoutes } from './presentation/routes/login.routes';
 import { RestaurantsRoutes } from './presentation/routes/restaurants.routes';
@@ -27,22 +28,16 @@ export class App {
 
   private configureRoutes() {
     const loginRoute = new LoginRoutes();
-    const loginRoutes = loginRoute.getRoutes();
-
-    const defaultRoute = new InfoRoutes();
-    const defaultRoutes = defaultRoute.getRoutes();
-
+    const defaultRoute = new InfoRoutes();    
     const restaurantsRoute = new RestaurantsRoutes();
-    const restaurantsRoutes = restaurantsRoute.getRoutes();
-
     const usersRoute = new UsersRoutes();
-    const usersRoutes = usersRoute.getRoutes();
+    const categoriesRoute = new CategoriesRoutes();
 
-
-    this.app.use(loginRoutes);
-    this.app.use(defaultRoutes);
-    this.app.use(restaurantsRoutes);
-    this.app.use(usersRoutes);
+    this.app.use(loginRoute.getRoutes());
+    this.app.use(defaultRoute.getRoutes());
+    this.app.use(restaurantsRoute.getRoutes());
+    this.app.use(usersRoute.getRoutes());
+    this.app.use(categoriesRoute.getRoutes());
   }
 
   private async connectToDatabase() {

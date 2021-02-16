@@ -1,9 +1,9 @@
-import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
-import NavigateNextIcon from "@material-ui/icons/NavigateNext";
-import React from "react";
-import Slider, { Settings } from "react-slick";
-import CardCategory from "../CardCategory/index";
-import "./sliderCard.scss";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import React from 'react';
+import Slider, { Settings } from 'react-slick';
+import CardCategory from '../CardCategory/index';
+import './sliderCard.scss';
 
 type Category = {
   name: string;
@@ -34,8 +34,8 @@ const PrevArrow: React.FC = (props: any) => {
 
 const SliderCard: React.FC<Props> = ({ categories }) => {
   const settings: Settings = {
-    focusOnSelect: true,
-    infinite: true,
+    focusOnSelect: false,
+    infinite: false,
     speed: 200,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -76,15 +76,19 @@ const SliderCard: React.FC<Props> = ({ categories }) => {
   };
 
   return (
-    <Slider {...settings} className="slider-category">
-      {categories.map((category, index) => (
-        <div key={index}>
-          <div className="slide-item">
-            <CardCategory name={category.name} imgUrl={category.imgUrl} />
-          </div>
-        </div>
-      ))}
-    </Slider>
+    <>
+      {categories.length > 0 && (
+        <Slider {...settings} className="slider-category">
+          {categories.map((category, index) => (
+            <div key={index}>
+              <div className="slide-item">
+                <CardCategory name={category.name} imgUrl={category.imgUrl} />
+              </div>
+            </div>
+          ))}
+        </Slider>
+      )}
+    </>
   );
 };
 
