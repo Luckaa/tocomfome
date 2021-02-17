@@ -27,7 +27,7 @@ export class RegisterUserHandler implements IRegisterUserHandler {
 
         if (files) {
             const [firstfile] = files;            
-            // upload to service and get link image
+            // TODO: upload to service and get link image
         }
 
         const userCreated = await this.saveUser(registerUserDto);
