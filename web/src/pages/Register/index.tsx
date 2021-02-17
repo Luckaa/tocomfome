@@ -20,7 +20,6 @@ const Register = () => {
   const [clientType, setClientType] = useState('client');
   const [file, setFile] = useState<File | undefined>(undefined);
 
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setClientType((event.target as HTMLInputElement).value);
   };
@@ -31,7 +30,7 @@ const Register = () => {
     try {
       data.type = clientType;
       const response = await usersService.registerUser(data, file);
-      console.log(response.data);
+      history.push('/home');
     } catch (error) {
       if (error.response) {
         const { errors } = error.response.data;
