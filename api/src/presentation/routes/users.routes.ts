@@ -1,5 +1,9 @@
 import { Router } from 'express';
+import multer from 'multer';
 import { UsersController } from '../controllers/users.controller';
+
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
 export class UsersRoutes {
     private _router: Router;
@@ -16,6 +20,6 @@ export class UsersRoutes {
     }
 
     private mapRoutes() {
-        this._router.post('/users', (req, res) => this._controller.registerUser(req, res));
+        this._router.post('/users', upload.any(), (req, res) => this._controller.registerUser(req, res));
     }
 }

@@ -1,13 +1,13 @@
-import { Result } from '../../../infra/models/result';
-import { RegisterUserDto } from '../dtos/register-user.dto';
-import { IRegisterUserHandler } from './register-user-handler.interface';
-import { RegisterUserContract } from '../contracts/register-user.contract';
 import { ValidationFailedError } from '../../../infra/errors/validationFailedError';
-import { IUserRepository } from '../repositories/user.repository.interface';
-import { UserRepository } from '../repositories/user.repository';
-import { User } from '../models/user';
+import { Result } from '../../../infra/models/result';
 import { IEncriptService } from '../../shared/services/encript-service.interface';
 import { EncriptService } from '../../shared/services/encript.service';
+import { RegisterUserContract } from '../contracts/register-user.contract';
+import { RegisterUserDto } from '../dtos/register-user.dto';
+import { User } from '../models/user';
+import { UserRepository } from '../repositories/user.repository';
+import { IUserRepository } from '../repositories/user.repository.interface';
+import { IRegisterUserHandler } from './register-user-handler.interface';
 
 export class RegisterUserHandler implements IRegisterUserHandler {
 
@@ -22,6 +22,14 @@ export class RegisterUserHandler implements IRegisterUserHandler {
     async handle(registerUserDto: RegisterUserDto): Promise<Result> {
         this.validate(registerUserDto);
         await this.validadeUseCases(registerUserDto);
+
+        const { files } = registerUserDto;
+
+        if (files) {
+            const [firstfile] = files;            
+            // upload to service and get link image
+        }
+
         const userCreated = await this.saveUser(registerUserDto);
         const resultSuccess = new Result(userCreated, 'usuario criado com sucesso', true, []);
         return resultSuccess;
@@ -38,7 +46,7 @@ export class RegisterUserHandler implements IRegisterUserHandler {
 
     private async validadeUseCases(registerUserDto: RegisterUserDto) {
         const userFound = await this._repository.findByEmail(registerUserDto.email);
-        
+
         if (userFound) {
             throw new ValidationFailedError('falha ao cadastrar usuario', { name: 'email', message: 'email ja cadastrado' });
         }

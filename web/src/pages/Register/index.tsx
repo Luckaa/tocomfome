@@ -9,6 +9,7 @@ import { Form } from '@unform/web';
 import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import InputForm from '../../components/formComponents/InputForm';
+import InputFile from '../../components/InputFile/index';
 import { getFieldErrors } from '../../helper/error.handler';
 import usersService from '../../services/users.service';
 import './register.scss';
@@ -17,6 +18,8 @@ const Register = () => {
   let history = useHistory();
   const formRef = useRef<FormHandles>(null);
   const [clientType, setClientType] = useState('client');
+  const [file, setFile] = useState<File | undefined>(undefined);
+
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setClientType((event.target as HTMLInputElement).value);
@@ -27,14 +30,20 @@ const Register = () => {
   const handleSubmit = async (data: any) => {
     try {
       data.type = clientType;
-      const response = await usersService.registerUser(data);
+      const response = await usersService.registerUser(data, file);
       console.log(response.data);
     } catch (error) {
       if (error.response) {
-        const { errors } = error.response.data;        
+        const { errors } = error.response.data;
         const formErrors = getFieldErrors(errors);
         formRef.current?.setErrors(formErrors);
       }
+    }
+  };
+
+  const handleChangeFile = (file: File) => {
+    if (file) {
+      setFile(file);
     }
   };
 
@@ -46,6 +55,8 @@ const Register = () => {
             <ArrowBackIcon className="btn-icon" onClick={goBack} />
             <h2 className="title">Cadastrar-se</h2>
           </div>
+
+          <InputFile onChange={handleChangeFile} />
 
           <RadioGroup value={clientType} onChange={handleChange}>
             <FormControlLabel

@@ -1,0 +1,17 @@
+
+.input-file-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-file {
+  display: none;
+}
+
+.container-preview {
+  width: 200px;
+  .preview-input-file {
+    width: 100%;
+  }
+}

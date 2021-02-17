@@ -6,6 +6,7 @@ export interface RegisterUserDto {
     password: string;
     validatePassword: string,
     ownerName: string;
-    restaurantName:string;
-    cnpj:string;
+    restaurantName: string;
+    cnpj: string;
+    files?: Express.Multer.File[]
 }

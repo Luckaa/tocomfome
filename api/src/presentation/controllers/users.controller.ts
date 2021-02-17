@@ -13,7 +13,13 @@ export class UsersController {
 
     async registerUser(request: Request, response: Response) {
         try {
-            const result = await this._registerRestaurantHandler.handle(request.body)
+
+            const createUserDto = {
+                ...request.body,
+                files: request.files
+            }
+
+            const result = await this._registerRestaurantHandler.handle(createUserDto)
             return HandleResponse.handle(response, HttpStatus.SUCCESS, result);
         } catch (error) {
             return HandleResponse.handleError(response, HttpStatus.BAD_REQUEST, error);
